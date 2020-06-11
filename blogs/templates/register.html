@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
+</head>
+<style>
+    body{
+        background-image: url("../static/images/wallhaven-lm1z2l.jpg")
+    }
+  .content{
+        margin-top:200px ;
+        opacity: 1;
+    }
+    {#调背景颜色#}
+    .panel{
+            background-color: rgba(255, 255, 255, 0.7);
+    }
+</style>
+<body>
+<div class="content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">   注册页面</h3>
+      </div>
+{#        内容就写一个form表单，提交到login视图函数#}
+      <div class="panel-body">
+            <form action="{{ url_for('front.register') }}" method="post">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" name="username" id="username" placeholder="请输入用户名" class="form-control">
+                </div>
+                 <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" name="password" id="password" placeholder="请输入密码" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="check_password">验证密码</label>
+                    <input type="password" name="check_password" id="check_password" placeholder="请再次输入密码" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+                <p><a href="{{ url_for('front.login') }}">去登录</a> </p>
+
+            </form>
+      <div class="alert alert-danger" role="alert">
+          {% for message in get_flashed_messages() %}
+               <p>{{ message }}</p>
+          {% endfor %}
+      </div>
+      </div>
+    </div>
+</div>
+<script src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+</body>
+</html>
